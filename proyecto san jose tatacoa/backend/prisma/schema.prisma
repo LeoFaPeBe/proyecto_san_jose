@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  nombre       String
+  rol          String    @default("ADMIN")
+  isActive     Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  reservas     Reserva[]
+}
+
+model Reserva {
+  id           String   @id @default(cuid())
+  codigo       String   @unique
+  huesped      String
+  email        String
+  telefono     String   @default("")
+  alojamiento  String
+  llegada      DateTime
+  salida       DateTime
+  personas     Int      @default(1)
+  actividades  String   @default("[]")
+  notas        String   @default("")
+  estado       String   @default("Pendiente")
+  total        String   @default("")
+  creadoEn     DateTime @default(now())
+  creadoPor    String?
+  usuario      User?    @relation(fields: [creadoPor], references: [id])
+}
+
+model Alojamiento {
+  id          String  @id @default(cuid())
+  nombre      String
+  icon        String  @default("🏡")
+  capacidad   String
+  precio      Int
+  descripcion String
+  disponible  Boolean @default(true)
+}
+
+model Actividad {
+  id          String @id @default(cuid())
+  nombre      String
+  icon        String @default("⭐")
+  duracion    String
+  precio      Int
+  descripcion String
+}
