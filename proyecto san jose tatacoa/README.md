@@ -68,8 +68,9 @@ sjt/
 
 ```bash
 # 1. Clonar y entrar al proyecto
-git clone <repo-url> sjt
-cd sjt
+git clone https://github.com/LeoFaPeBe/proyecto_san_jose.git
+
+cd proyecto_san_jose
 
 # 2. Configurar variables de entorno
 cp .env.example .env
