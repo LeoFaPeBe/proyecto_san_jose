@@ -1,28 +1,40 @@
-version: '3.9'
-
 services:
+  database:
+    image: postgres:16-alpine
+    container_name: tatacoa-db
+    restart: always
+    environment:
+      POSTGRES_USER: tatacoa
+      POSTGRES_PASSWORD: tatacoa123
+      POSTGRES_DB: tatacoa
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
   backend:
     build:
       context: ./backend
     container_name: tatacoa-backend
+    restart: always
     ports:
-      - '4000:4000'
+      - "4000:4000"
+    depends_on:
+      - database
     env_file:
       - ./backend/.env
-    volumes:
-      - ./backend:/app
-    restart: always
 
   frontend:
     build:
       context: ./frontend
     container_name: tatacoa-frontend
+    restart: always
     ports:
-      - '5173:5173'
-    env_file:
-      - ./frontend/.env
+      - "5173:5173"
     depends_on:
       - backend
-    volumes:
-      - ./frontend:/app
-    restart: always
+    env_file:
+      - ./frontend/.env
+
+volumes:
+  postgres_data:

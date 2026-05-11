@@ -1,10 +1,18 @@
-FROM node:20-alpine
+# ===== Dependencies =====
+FROM node:20-alpine AS dependencies
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm ci
+
+# ===== Builder =====
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+COPY --from=dependencies /app/node_modules ./node_modules
 
 COPY . .
 
@@ -12,6 +20,21 @@ RUN npx prisma generate
 
 RUN npm run build
 
+# ===== Production =====
+FROM node:20-alpine AS production
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+COPY package*.json ./
+
+RUN npm ci --omit=dev
+
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+
 EXPOSE 4000
 
-CMD ["npm", "run", "start:prod"]
+CMD ["node", "dist/src/main"]
