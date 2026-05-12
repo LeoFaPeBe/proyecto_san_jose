@@ -55,7 +55,6 @@ proyecto-san-jose-tatacoa/
 ├── docker-compose.yml
 └── README.md
 
-
 **Instalación del Proyecto**
 
 1. Clonar el repositorio
