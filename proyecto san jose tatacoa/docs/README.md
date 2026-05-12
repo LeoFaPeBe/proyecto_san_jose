@@ -1,8 +1,8 @@
-**Finca Turística San José Tatacoa**
+## Finca Turística San José Tatacoa
 
 Sistema web fullstack para la gestión de reservas, alojamientos y actividades turísticas del Desierto de la Tatacoa.
 
-**Descripción General**
+## Descripción General
 
 La plataforma permite administrar:
 
@@ -15,7 +15,7 @@ Gestión centralizada de información turística
 
 El sistema fue desarrollado bajo una arquitectura moderna basada en contenedores Docker y servicios desacoplados.
 
-**Objetivo del Proyecto**
+## Objetivo del Proyecto
 
 Desarrollar una plataforma web moderna que permita optimizar la administración turística de la Finca Turística San José Tatacoa, facilitando la gestión de reservas, alojamientos y actividades para clientes y administradores.
 
@@ -36,8 +36,10 @@ Desarrollar una plataforma web moderna que permita optimizar la administración 
 - Docker
 - Docker Compose
 
-**Estructura General del Proyecto**
+## Estructura General del Proyecto
 
+
+```bash
 proyecto-san-jose-tatacoa/
 │
 ├── backend/
@@ -47,15 +49,16 @@ proyecto-san-jose-tatacoa/
 │   └── .env
 │
 ├── frontend/
-│   ├── src/
 │   ├── public/
+│   ├── src/
 │   ├── Dockerfile
 │   └── .env
 │
 ├── docker-compose.yml
 └── README.md
+```
 
-**Instalación del Proyecto**
+## Instalación del Proyecto
 
 1. Clonar el repositorio
 git clone https://github.com/LeoFaPeBe/proyecto_san_jose.git
@@ -78,7 +81,7 @@ VITE_API_URL=http://localhost:4000
 
 docker compose up --build
 
-**Configuración de Base de Datos**
+## Configuración de Base de Datos
 
 - Acceder al contenedor backend:
 
@@ -96,7 +99,7 @@ npx prisma db push
 
 npm run db:seed
 
-**Credenciales Administrativas**
+## Credenciales Administrativas
 
 Correo: admin@sanjosetatacoa.com
 Contraseña: admin123
@@ -108,16 +111,16 @@ Servicio	    Puerto
 - Backend	    4000
 - PostgreSQL	5432
 
-**Funcionalidades Principales**
+## Funcionalidades Principales
 
-*Cliente*
+**Cliente**
 
 - Consultar alojamientos
 - Ver actividades
 - Realizar reservas
 - Consultar disponibilidad
 
-*Administrador*
+**Administrador**
 
 - Iniciar sesión
 - Gestionar reservas
@@ -125,7 +128,7 @@ Servicio	    Puerto
 - Gestionar actividades
 - Administrar usuarios
 
-**Seguridad Implementada**
+## Seguridad Implementada
 
 El sistema implementa varias medidas de seguridad:
 
@@ -135,7 +138,7 @@ El sistema implementa varias medidas de seguridad:
 - Validación de rutas protegidas
 - Separación de servicios mediante Docker
 
-**Requerimientos Funcionales**
+## Requerimientos Funcionales
 - Registro de reservas
 - Gestión de alojamientos
 - Gestión de actividades
@@ -144,7 +147,7 @@ El sistema implementa varias medidas de seguridad:
 - API RESTful
 - Gestión de usuarios administradores
 
-**Requerimientos No Funcionales**
+## Requerimientos No Funcionales
 - Arquitectura modular
 - Escalabilidad
 - Seguridad
@@ -152,9 +155,9 @@ El sistema implementa varias medidas de seguridad:
 - Persistencia confiable
 - Compatibilidad multiplataforma
  
-**ADR — Architectural Decision Records**
+## ADR — Architectural Decision Records
 
-*ADR-001 — Uso de NestJS*
+**ADR-001 — Uso de NestJS**
 Decisión
 
 Se seleccionó NestJS como framework backend.
@@ -166,7 +169,7 @@ Excelente integración con TypeScript
 Compatibilidad con JWT y Prisma
 Buenas prácticas empresariales
 
-*ADR-002 — Uso de PostgreSQL*
+**ADR-002 — Uso de PostgreSQL**
 Decisión
 
 Se seleccionó PostgreSQL como motor de base de datos.
@@ -177,7 +180,7 @@ Integridad relacional
 Excelente rendimiento
 Compatibilidad con Prisma ORM
 
-*ADR-003 — Uso de Prisma ORM*
+**ADR-003 — Uso de Prisma ORM**
 Decisión
 
 Se implementó Prisma ORM para el acceso a datos.
@@ -188,7 +191,7 @@ Seguridad en consultas
 Facilidad de migraciones
 Integración con TypeScript
 
-*ADR-004 — Uso de Docker*
+**ADR-004 — Uso de Docker**
 Decisión
 
 El proyecto fue contenerizado mediante Docker.
@@ -199,34 +202,34 @@ Consistencia entre entornos
 Facilidad de despliegue
 Separación de servicios
 
-**API REST**
+## API REST
 
 El backend expone una API REST desarrollada con NestJS.
 
 Principales endpoints: 
 
-Auth
+**Auth**
 - POST /auth/login
 
-Reservas
+**Reservas**
 - GET /reservas
 - POST /reservas
 - PATCH /reservas/:id
 - DELETE /reservas/:id
 
-Alojamientos
+**Alojamientos**
 - GET /alojamientos
 
-Actividades
+**Actividades**
 - GET /actividades
 
-**Swagger API**
+## Swagger API
 
 Acceso
 
 http://localhost:4000/api
 
-**Pruebas Realizadas**
+## Pruebas Realizadas
 
 - Conexión Frontend ↔ Backend
 - Persistencia PostgreSQL
@@ -237,7 +240,7 @@ http://localhost:4000/api
 - CRUD de reservas
 - Validación de rutas protegidas
 
-**ROADMAP FUTURO**
+## ROADMAP FUTURO
 
 **Mejoras futuras**
 
@@ -250,7 +253,7 @@ http://localhost:4000/api
 - Panel analítico
 - Reservas en tiempo real
 
-**Capturas del Sistema**
+## Capturas del Sistema
 
 Página principal
 ![Home](./docs/images/home.png)
@@ -268,7 +271,7 @@ Docker funcionando
 ![Docker](./docs/images/docker.png)
 
 
-**Autor**
+## Autor
 Leonardo Fabio Pérez Bermúdez
 
 **Proyecto académico y profesional desarrollado para la gestión turística de la:**
